@@ -33,7 +33,7 @@ class BpongAPI_0_Suite extends PHPUnit_Framework_TestCase{private $is_clear_db=T
 		$bpong_obj	= new BpongEventMgmt\BpongAPI();
 		$events = $bpong_obj->getResourceCollection( 'Registrations' );
 
-print_r( $events );
+// print_r( $events );
 
 
 

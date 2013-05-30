@@ -9,7 +9,7 @@
 * @backupGlobals disabled
 */
 class API_0_Suite extends PHPUnit_Framework_TestCase{private $is_clear_db=TRUE;
-	const _is_all = FALSE;   //  FALSE  TRUE
+	const _is_all = TRUE;   //  FALSE  TRUE
 
 	const _is_1_1	= FALSE;
 	const _is_1_2	= FALSE;
@@ -155,10 +155,8 @@ class API_0_Suite extends PHPUnit_Framework_TestCase{private $is_clear_db=TRUE;
 		$filter = urlencode( '(Organization.name LIKE \'%_tests_A%\')OR(Venue.city LIKE \'%_tests_A%\')' );
 
 		$uri	.=
-// 			'?filter='.$filter.
+			'?filter='.$filter.
 		'';
-
-// echo "\n\n$uri\n\n";
 
 		$bp_obj	= new \BpongEventMgmt\BpongAPI();
 		$api_response	= $bp_obj->getResourceByURI( $uri );
@@ -167,18 +165,14 @@ class API_0_Suite extends PHPUnit_Framework_TestCase{private $is_clear_db=TRUE;
 		$this->assertEquals( 5, count( $events ), "\n*** Assert 1 ***\nWrong quantity of events was found.\n" );
 
 		foreach( $events as $event ){
-// print_r( $event );break;
 
 			$org	= $event['Organization'];
 			$venue	= $event['Venue'];
-			$this->assertRegExp( '/_tests_A/', $org['name'], "\n*** Assert 2 ***\nWrong Organization name was found.\n" );
-			$this->assertRegExp( '/_tests_A/', $venue['city'], "\n*** Assert 3 ***\nWrong Venue city was found.\n" );
 
+			$condition	= (bool)preg_match( '/_tests_A/', $org['name'] )||(bool)preg_match( '/_tests_A/', $venue['city'] );
+
+			$this->assertTrue( $condition, "\n*** Assert 2 ***\nPattern does not match.\n");
 		}
-
-
-// print_r( $events );
-
 
 		$isUtErr=FALSE;
 	}

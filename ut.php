@@ -15,7 +15,7 @@ class ut{
 	}
 //______________________________________________________________________________
 
-	public function doUt(){
+	public function doUt(){	//******************	Tests    *********************
 		$suites = new PHPUnit_Framework_TestSuite( 'Package' );
 
 
@@ -29,7 +29,7 @@ class ut{
 
 		}else{
 			$suites->addTestSuite( 'API_0_Suite' );
-// 			$suites->addTestSuite( 'BpongAPI_0_Suite' );
+// 			$suites->addTestSuite( 'BpongAPI_0_Suite' );		//	Not finished
 		}
 
 		echo '<pre style="font-size:12px;">';
