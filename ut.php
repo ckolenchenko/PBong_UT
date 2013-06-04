@@ -19,17 +19,17 @@ class ut{
 		$suites = new PHPUnit_Framework_TestSuite( 'Package' );
 
 
-// 		$is_all	= TRUE;
+		$is_all	= TRUE;
 
 
 		if(!isset($is_all)){
 
-			$suites->addTestSuite( 'API_0_Suite' );
+			$suites->addTestSuite( 'BpongAPI_0_Suite' );
 
 
 		}else{
 			$suites->addTestSuite( 'API_0_Suite' );
-// 			$suites->addTestSuite( 'BpongAPI_0_Suite' );		//	Not finished
+			$suites->addTestSuite( 'BpongAPI_0_Suite' );
 		}
 
 		echo '<pre style="font-size:12px;">';
